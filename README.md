@@ -7,7 +7,7 @@ Built using **React** and modern JavaScript (ES6+).
 
 ### Live Demo
 
-You can check out the live demo of the Weather App here: [Live Demo](https://ThanziaPatel.github.io/weather-forecast-app/)
+You can check out the live demo of the Weather App here: [Live Demo](https://thanziapatelraheem.github.io/weather-forecast-app/)
 
 ---
 
