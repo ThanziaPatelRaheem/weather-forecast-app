@@ -26,13 +26,13 @@ You can check out the live demo of the Weather App here: [Live Demo](https://you
 
 ## ⚙️ Tech Stack
 
-| Technology     | Purpose                        |
-|----------------|--------------------------------|
-| **React**      | UI library                     |
-| **HTML5**      | App structure                  |
-| **CSS**        | Styling                        |
-| **JavaScript** | Logic and interactivity        |
-| **OpenWeather API** | Weather data provider     |
+| Technology          | Purpose                 |
+| ------------------- | ----------------------- |
+| **React**           | UI library              |
+| **HTML5**           | App structure           |
+| **CSS**             | Styling                 |
+| **JavaScript**      | Logic and interactivity |
+| **OpenWeather API** | Weather data provider   |
 
 ---
 
@@ -42,20 +42,15 @@ The app is built entirely with **React functional components** and hooks:
 
 ### 📦 State Management
 
-- `useState`  
+- `useState`
   - To store city name, API response, loading status, and errors
   - To handle temperature unit and coordinates
 
 ### 📡 Side Effects & Lifecycle
 
-- `useEffect`  
+- `useEffect`
   - To fetch weather data when city or coordinates change
   - To get the user’s geolocation on first render
   - For logging errors and debugging
 
 ---
-
-
-
-
-
