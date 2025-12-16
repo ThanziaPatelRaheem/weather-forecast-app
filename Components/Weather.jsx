@@ -19,7 +19,7 @@ export default function Weather(props) {
 
         {props.temp && !props.error && (
           <div className="weather-condition">
-            <div className="img-container">
+            {/* <div className="img-container">
               {imageIcon && (
                 <img
                   className="weather-img"
@@ -27,7 +27,7 @@ export default function Weather(props) {
                   alt="Weather icon"
                 />
               )}
-            </div>
+            </div> */}
 
             <div className="details-container">
               <h1>
@@ -40,6 +40,7 @@ export default function Weather(props) {
               <h2 className="city-name">{props.city}</h2>
 
               <p className="feels-like">Feels like {props.feelLike}</p>
+
               <p className="date">{props.dateTime}</p>
             </div>
           </div>

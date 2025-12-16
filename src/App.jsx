@@ -11,17 +11,13 @@ const apikey = "befb5e5fbc87452311d1ef41b55ad5e7";
 function App() {
   // state to updte the user Input
 
-  const [cityName, setCityName] = React.useState("singapore");
+  const [cityName, setCityName] = React.useState("");
   const [weatherData, setWeatherData] = React.useState(null);
 
   const [units, setUnits] = React.useState("C");
   const [coords, setCoords] = React.useState(null);
   const [isLoading, setisLoading] = React.useState(true);
   const [errorsfound, setError] = React.useState(null);
-
-  // function toggleUnits() {
-  //   setUnits(units === "C" ? "F" : "C");
-  // }
 
   function captureInput(event) {
     event.preventDefault();
@@ -44,16 +40,20 @@ function App() {
   //geo location
 
   React.useEffect(() => {
+    if (!navigator.geolocation) return;
+
     navigator.geolocation.getCurrentPosition(
-      function (position) {
+      (position) => {
+        setCityName("");
         setCoords({
           lat: position.coords.latitude,
           lon: position.coords.longitude,
         });
       },
-      function () {
-        alert("Could not get your location");
-      }
+      () => {
+        setCityName("Singapore");
+      },
+      { timeout: 8000 }
     );
   }, []);
 
@@ -114,12 +114,80 @@ function App() {
     });
   }
 
+  const weatherMain = weatherData?.weather?.[0]?.main?.toLowerCase() || "";
+  const desc = weatherData?.weather?.[0]?.description?.toLowerCase() || "";
+
+  const isDay =
+    weatherData?.dt >= weatherData?.sys?.sunrise &&
+    weatherData?.dt < weatherData?.sys?.sunset;
+
+  const isRainy =
+    weatherMain.includes("rain") ||
+    weatherMain.includes("drizzle") ||
+    desc.includes("rain") ||
+    desc.includes("drizzle");
+
+  const isCloudy = weatherMain.includes("cloud");
+
+  const isThunder = weatherMain.includes("thunder");
+
+  const isFoggy =
+    weatherMain.includes("mist") ||
+    weatherMain.includes("fog") ||
+    weatherMain.includes("haze") ||
+    weatherMain.includes("smoke") ||
+    weatherMain.includes("dust") ||
+    weatherMain.includes("sand") ||
+    weatherMain.includes("ash");
+
+  const isClear = weatherMain.includes("clear");
+
+  const isSnow = weatherMain.includes("snow");
+
+  const isWindy =
+    weatherMain.includes("wind") ||
+    desc.includes("wind") ||
+    desc.includes("breeze");
+
+  const getBgClass = () => {
+    if (isThunder) return isDay ? "bg-thunder-day" : "bg-thunder-night";
+    if (isRainy) return isDay ? "bg-rain-day" : "bg-rain-night";
+    if (isFoggy) return isDay ? "bg-haze-day" : "bg-haze-night";
+    if (isCloudy) return isDay ? "bg-cloud-day" : "bg-cloud-night";
+    if (isClear) return isDay ? "bg-clear-day" : "bg-clear-night";
+
+    return isDay ? "bg-default-day" : "bg-default-night";
+  };
+
   return (
     <>
       {!weatherData ? (
         <Loading />
       ) : (
-        <main>
+        <main
+          className={`main-grid ${getBgClass()} ${
+            isDay ? "theme-light" : "theme-dark"
+          }`}
+        >
+          {isRainy && (
+            <>
+              <div className="weather-overlay rain-overlay rain-far" />
+              <div className="weather-overlay rain-overlay rain-near" />
+            </>
+          )}
+
+          {isThunder && <div className="weather-overlay thunder-overlay" />}
+
+          {isCloudy && <div className="weather-overlay cloud-overlay" />}
+
+          {isFoggy && <div className="weather-overlay fog-overlay" />}
+
+          {isClear && <div className="weather-overlay sun-overlay" />}
+
+          {isSnow && <div className="weather-overlay snow-overlay" />}
+
+          {isWindy && <div className="weather-overlay wind-overlay" />}
+
           <Weather
             onFormSubmit={captureInput}
             city={weatherData.name || cityName}
