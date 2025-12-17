@@ -797,7 +797,122 @@ form button {
     min-height: 260px;
   }
 }
-@media (min-width: 426px) and (max-width: 768px) {
+@media (min-width: 426px) and (max-width: 480px) {
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column: 1/-1;
+  }
+  .weather-wrap {
+    grid-column: 1/-1;
+  }
+  .weather-condition {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    max-width: 420px;
+    width: 100%;
+    margin: 30px auto;
+    height: auto;
+  }
+  .weather-details-container {
+    grid-column: 1/-1;
+  }
+  main {
+    margin-top: 40px;
+    overflow: visible;
+    max-width: 420px;
+    width: 100%;
+    height: auto;
+  }
+  .weather-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column: 1/-1;
+    justify-content: center;
+    align-items: center;
+  }
+  .details-container {
+    width: 300px;
+    height: 200px;
+    display: grid;
+    grid-template-rows:
+      auto
+      auto
+      1fr
+      auto
+      auto
+      auto;
+
+    align-items: center;
+    text-align: center;
+  }
+  .weather-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 100px;
+    overflow: hidden;
+  }
+
+  .weather-img {
+    max-width: 100px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.85;
+  }
+
+  .weather-wrap h1 {
+    width: 100%;
+    margin-top: 20px 0 0;
+    grid-column: 1/-1;
+    color: #edf2f4;
+    font-size: 1rem;
+    overflow: hidden;
+    text-align: center;
+  }
+  form {
+    max-width: 100%;
+    margin: 30px auto;
+    width: 300px;
+    height: 40px;
+  }
+  .weather-condition {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: auto;
+  }
+  .details-container {
+    width: 300px;
+    height: 200px;
+  }
+  .weather-details-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 420px;
+    width: 90%;
+    height: auto;
+    grid-row-gap: 10px;
+    margin: 25px auto;
+  }
+
+  .item-7 {
+    grid-row: 4/5;
+    grid-column: 1/-1;
+    height: 260px;
+    min-height: 260px;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
   main.main-grid {
     display: grid;
     grid-template-columns: minmax(1em, 1fr) repeat(3, minmax(150px, 320px)) minmax(
