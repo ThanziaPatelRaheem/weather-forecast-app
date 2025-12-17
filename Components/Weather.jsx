@@ -36,8 +36,23 @@ export default function Weather(props) {
                   : Math.round((props.temp * 9) / 5 + 32)}
                 °{props.unit}
               </h1>
-              <p className="description">{props.description}</p>
+
               <h2 className="city-name">{props.city}</h2>
+              <p className="description">
+                {props.description
+                  ? props.description.charAt(0).toUpperCase() +
+                    props.description.slice(1)
+                  : ""}
+              </p>
+              <div className="weather-icon-wrap">
+                {imageIcon && (
+                  <img
+                    className="weather-img"
+                    src={imageIcon}
+                    alt="Weather icon"
+                  />
+                )}
+              </div>
 
               <p className="feels-like">Feels like {props.feelLike}</p>
 

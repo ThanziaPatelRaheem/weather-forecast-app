@@ -169,20 +169,13 @@ function App() {
             isDay ? "theme-light" : "theme-dark"
           }`}
         >
-          {isRainy && (
-            <>
-              <div className="weather-overlay rain-overlay rain-far" />
-              <div className="weather-overlay rain-overlay rain-near" />
-            </>
-          )}
+          {isClear && <div className="weather-overlay sunny-light-overlay" />}
 
           {isThunder && <div className="weather-overlay thunder-overlay" />}
 
           {isCloudy && <div className="weather-overlay cloud-overlay" />}
 
           {isFoggy && <div className="weather-overlay fog-overlay" />}
-
-          {isClear && <div className="weather-overlay sun-overlay" />}
 
           {isSnow && <div className="weather-overlay snow-overlay" />}
 
